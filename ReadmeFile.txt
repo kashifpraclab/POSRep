@@ -1,1 +1,1 @@
-this is my first read me file.
+This is my First commit to POS Repository.
