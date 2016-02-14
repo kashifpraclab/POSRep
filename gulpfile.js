@@ -26,6 +26,7 @@ var imagemin = require('gulp-imagemin');
 var tsProject = typescript.createProject('tsconfig.json');
 
 gulp.task('build-css', function () {
+    Console.log("1");
     return gulp.src(assetsDev + 'scss/*.scss')
         .pipe(sourcemaps.init())
         .pipe(postcss([precss, autoprefixer, cssnano]))
@@ -35,6 +36,7 @@ gulp.task('build-css', function () {
 });
 
 gulp.task('build-ts', function () {
+    Console.log("2");
     return gulp.src(appDev + '**/*.ts')
         .pipe(sourcemaps.init())
         .pipe(typescript(tsProject))
@@ -44,6 +46,7 @@ gulp.task('build-ts', function () {
 });
 
 gulp.task('build-img', function () {
+    Console.log("3");
     return gulp.src(assetsDev + 'img/**/*')
         .pipe(imagemin({
             progressive: true
@@ -52,11 +55,13 @@ gulp.task('build-img', function () {
 });
 
 gulp.task('build-html', function () {
+    Console.log("4");
     return gulp.src(appDev + '**/*.html')
         .pipe(gulp.dest(appProd));
 });
 
 gulp.task('watch', function () {
+    Console.log("5");
     gulp.watch(appDev + '**/*.ts', ['build-ts']);
     gulp.watch(assetsDev + 'scss/**/*.scss', ['build-css']);
     gulp.watch(assetsDev + 'img/*', ['build-img']);
